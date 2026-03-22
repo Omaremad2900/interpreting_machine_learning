@@ -195,3 +195,9 @@ European Parliament and Council. (2024). Regulation (EU) 2024/1689 laying down h
 Stanford University. (2025). *Artificial Intelligence Index Report 2025*.
 
 Winfield, A. F. T., et al. (2021). IEEE P7001: A Proposed Standard on Transparency. *Frontiers in Robotics and AI*.
+
+---
+
+## 10. AI Transparency Statement
+
+In accordance with the CSEN 1153 syllabus guidelines, I acknowledge that an AI language model was used during the preparation of this chapter. Specifically, the LLM was utilized for draft refinement, structural organization, and pedagogical scaffolding (generating the Python code snippet and discussion prompts). All AI-generated outputs were critically evaluated, independently verified against the cited academic and legal sources, and synthesized to reflect my own original analysis of the topic.
