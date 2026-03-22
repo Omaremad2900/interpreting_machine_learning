@@ -4,7 +4,7 @@
 
 Building on the technical foundations of machine learning discussed in Chapter 1, we must now confront the socio-technical reality of deploying these models in the real world.
 
-Imagine this scenario: You apply for a vital bank loan to buy a house, but your application is rejected. When you ask the bank why, the representative simply says: *"The algorithm categorized you as high risk. The machine decided."*
+Imagine this scenario: You apply for a vital bank loan to buy a house, but your application is rejected. When you ask the bank why, the representative simply says: _"The algorithm categorized you as high risk. The machine decided."_
 
 Is that acceptable? Who deserves an explanation in that room, and what kind of explanation do they deserve? More importantly, is the bank legally required to provide one?
 
@@ -16,35 +16,37 @@ This chapter explores why Explainable AI (XAI) is an essential governance tool u
 
 ## 2. What Is an Explanation? (Explanatory Pragmatism & Measurement)
 
-Before regulating explanations, we must define what makes an explanation *good* and how to measure it.
+Before regulating explanations, we must define what makes an explanation _good_ and how to measure it.
 
 ### 2.1 Explanatory Pragmatism
-In XAI, we rely on the philosophical framework of **Explanatory Pragmatism**. Under this framework, an explanation is not just a mathematical readout of weights and biases; it is a *communicative act* where an explainer shares information to help a specific audience achieve comprehension. A pragmatic explanation must be:
 
-*   **Factually correct:** Accurately reflecting the model's operations.
-*   **Useful & Context-specific:** Providing actionable insights within the user's specific operational constraints.
-*   **User-specific:** Tailored to the recipient's technical knowledge.
-*   **Pluralistic:** Allowing for different normative perspectives rather than forcing a single viewpoint.
+In XAI, we rely on the philosophical framework of **Explanatory Pragmatism**. Under this framework, an explanation is not just a mathematical readout of weights and biases; it is a _communicative act_ where an explainer shares information to help a specific audience achieve comprehension. A pragmatic explanation must be:
+
+- **Factually correct:** Accurately reflecting the model's operations.
+- **Useful & Context-specific:** Providing actionable insights within the user's specific operational constraints.
+- **User-specific:** Tailored to the recipient's technical knowledge.
+- **Pluralistic:** Allowing for different normative perspectives rather than forcing a single viewpoint.
 
 ### 2.2 Measuring Transparency: The IEEE P7001 Standard
+
 For software engineers, abstract philosophy must be translated into testable requirements. The **IEEE P7001 Standard on Transparency** provides a measurable framework to assess autonomous systems. For end-users, it defines testable levels of transparency:
 
-*   **Level 1:** A comprehensive user manual is provided.
-*   **Level 2:** The manual is presented as an interactive visualization or simulation.
-*   **Level 3:** The system features a *"why did you just do that?"* function, providing explanations for previous actions.
-*   **Level 4:** The system features a *"what would you do if...?"* function, allowing users to test hypothetical scenarios.
-*   **Level 5:** (Currently not defined, reserved for future advancements).
+- **Level 1:** A comprehensive user manual is provided.
+- **Level 2:** The manual is presented as an interactive visualization or simulation.
+- **Level 3:** The system features a _"why did you just do that?"_ function, providing explanations for previous actions.
+- **Level 4:** The system features a _"what would you do if...?"_ function, allowing users to test hypothetical scenarios.
+- **Level 5:** (Currently not defined, reserved for future advancements).
 
 ---
 
 ## 3. The Stakeholder Ecosystem: Conflicting Needs
 
-If an explanation is a communicative act tailored to an audience, we must map who that audience is. XAI features four primary stakeholder groups with inherently conflicting needs, or *desiderata*:
+If an explanation is a communicative act tailored to an audience, we must map who that audience is. XAI features four primary stakeholder groups with inherently conflicting needs, or _desiderata_:
 
-1.  **Developers (e.g., ML Engineers):** They build the system and require *reliability and performance*. They need complex feature-attribution graphs to troubleshoot and debug the model.
-2.  **Deployers (e.g., Bank or Hospital Management):** They implement the system and require *legal compliance and user acceptance*.
-3.  **End-Users (e.g., Doctors or Bank Clerks):** They interact with the system daily and need *interpretability and trust*. They must understand the AI well enough to know when to rely on it and when to override it using human judgment.
-4.  **Affected Communities (e.g., Patients or Loan Applicants):** They are impacted by the final decision. They demand *correctness, fairness, and redress*.
+1.  **Developers (e.g., ML Engineers):** They build the system and require _reliability and performance_. They need complex feature-attribution graphs to troubleshoot and debug the model.
+2.  **Deployers (e.g., Bank or Hospital Management):** They implement the system and require _legal compliance and user acceptance_.
+3.  **End-Users (e.g., Doctors or Bank Clerks):** They interact with the system daily and need _interpretability and trust_. They must understand the AI well enough to know when to rely on it and when to override it using human judgment.
+4.  **Affected Communities (e.g., Patients or Loan Applicants):** They are impacted by the final decision. They demand _correctness, fairness, and redress_.
 
 **The Great Disconnect:** One mathematical explanation cannot satisfy all these groups. Furthermore, the law focuses heavily on regulating Developers and Deployers, while XAI research focuses almost entirely on End-Users and Affected Communities. XAI serves as the vital bridge translating legal obligations into practical human empowerment.
 
@@ -60,16 +62,16 @@ In 2018, the European Union implemented the General Data Protection Regulation (
 
 However, this right is highly contested in academia:
 
-*   **The Legal Loophole:** Legal scholars point out that GDPR Article 22 only protects users from decisions based *"solely"* on automated processing. If a human bank clerk rubber-stamps the AI's output, the legal protection is bypassed.
-*   **The Pragmatic Critique:** Researchers highlight that affected communities often do not want a highly technical explanation of a neural network; what they truly desire is **action and redress**—a way to fix the economic or social damage they suffered.
+- **The Legal Loophole:** Legal scholars point out that GDPR Article 22 only protects users from decisions based _"solely"_ on automated processing. If a human bank clerk rubber-stamps the AI's output, the legal protection is bypassed.
+- **The Pragmatic Critique:** Researchers highlight that affected communities often do not want a highly technical explanation of a neural network; what they truly desire is **action and redress**—a way to fix the economic or social damage they suffered.
 
 ### 4.2 The EU AI Act (2024)
 
 To address these loopholes, the EU enacted the Artificial Intelligence Act, a comprehensive product safety regulation based on a risk taxonomy (Unacceptable, High, Limited, and Minimal risk). For "high-risk" systems (e.g., medical diagnostics or credit scoring), the AI Act mandates:
 
-*   **Transparency (Article 13):** Systems must be designed so that deployers can interpret the output and use it appropriately.
-*   **Human Oversight (Article 14):** Systems must allow for human intervention to prevent automation bias.
-*   **Right to Explanation (Article 86):** Grants affected persons the right to obtain clear and meaningful explanations of the AI system's role in decisions that adversely impact their fundamental rights.
+- **Transparency (Article 13):** Systems must be designed so that deployers can interpret the output and use it appropriately.
+- **Human Oversight (Article 14):** Systems must allow for human intervention to prevent automation bias.
+- **Right to Explanation (Article 86):** Grants affected persons the right to obtain clear and meaningful explanations of the AI system's role in decisions that adversely impact their fundamental rights.
 
 **Systemic Risk Thresholds:** The AI Act also introduces strict governance for General-Purpose AI (GPAI). Models trained with a cumulative compute greater than **10²⁵ floating-point operations (FLOPs)** are presumed to have high-impact capabilities and face rigorous systemic risk evaluations.
 
@@ -86,7 +88,7 @@ Will technical transparency actually make AI fair? To answer this, we must look 
 1.  **Inscrutability:** The mathematical rules of the model are too complex for a human brain to process. Existing laws focus almost entirely on fixing this by demanding technical transparency.
 2.  **Nonintuitiveness:** Machine learning is valuable precisely because it uncovers statistical relationships that defy human logic. Even if we perfectly reveal the math (fixing inscrutability), the rule itself might not make logical sense to a human.
 
-**The Ethical Dilemma:** Historically, humans use *intuition* as the bridge to evaluate if a decision is fair. Because AI is inherently nonintuitive, our intuition breaks down. Therefore, to prove that an AI's decision is **normatively defensible** (i.e., ethical and justified), simply explaining the final model is not enough. We must demand explanations of the *entire process* behind the model's development, including the training data and design choices.
+**The Ethical Dilemma:** Historically, humans use _intuition_ as the bridge to evaluate if a decision is fair. Because AI is inherently nonintuitive, our intuition breaks down. Therefore, to prove that an AI's decision is **normatively defensible** (i.e., ethical and justified), simply explaining the final model is not enough. We must demand explanations of the _entire process_ behind the model's development, including the training data and design choices.
 
 ---
 
@@ -94,10 +96,10 @@ Will technical transparency actually make AI fair? To answer this, we must look 
 
 Because single-organization compliance is insufficient, researchers propose the **SCOR Framework** (2025) to govern multi-actor digital ecosystems responsibly:
 
-*   **S - Shared Ethical Charter:** Binding ethical commitments (fairness, accountability) agreed upon by all participants before deployment.
-*   **C - Co-Design Mechanisms:** Bringing end-users and impacted communities into the design process early to prevent corporate capture.
-*   **O - Oversight and Learning:** Implementing continuous, independent audits and reporting logs to monitor the system post-deployment.
-*   **R - Regulatory Alignment:** Using adaptive strategies, like government-supervised "regulatory sandboxes," to test high-risk AI safely while complying with evolving laws like the AI Act.
+- **S - Shared Ethical Charter:** Binding ethical commitments (fairness, accountability) agreed upon by all participants before deployment.
+- **C - Co-Design Mechanisms:** Bringing end-users and impacted communities into the design process early to prevent corporate capture.
+- **O - Oversight and Learning:** Implementing continuous, independent audits and reporting logs to monitor the system post-deployment.
+- **R - Regulatory Alignment:** Using adaptive strategies, like government-supervised "regulatory sandboxes," to test high-risk AI safely while complying with evolving laws like the AI Act.
 
 ---
 
@@ -105,7 +107,7 @@ Because single-organization compliance is insufficient, researchers propose the 
 
 How do we actually deliver these explanations to non-technical users to satisfy Explanatory Pragmatism and the EU AI Act?
 
-Recent academic research in the *Cambridge Journal of Artificial Intelligence* recommends **Natural Language Explanations (NLE)** delivered via dialogue systems. Rather than showing a loan applicant a raw SHAP (SHapley Additive exPlanations) dependency plot, developers can pass feature attributions through a generative dialogue system to output a human-comprehensible explanation.
+Recent academic research in the _Cambridge Journal of Artificial Intelligence_ recommends **Natural Language Explanations (NLE)** delivered via dialogue systems. Rather than showing a loan applicant a raw SHAP (SHapley Additive exPlanations) dependency plot, developers can pass feature attributions through a generative dialogue system to output a human-comprehensible explanation.
 
 Effective dialogue systems should follow key design principles: they must allow natural language prompting, understand context, clarify previous inputs, and explicitly state confidence levels or admit when they lack an answer.
 
@@ -154,7 +156,7 @@ response = openai.ChatCompletion.create(
 print("NLE Output for Applicant:\n", response.choices[0].message.content)
 ```
 
-*Note for developers: Recommended Python libraries for XAI implementation include `shap`, `lime`, `interpret-community` (Microsoft), and `Dalex`.*
+_Note for developers: Recommended Python libraries for XAI implementation include `shap`, `lime`, `interpret-community` (Microsoft), and `Dalex`._
 
 ---
 
@@ -180,24 +182,26 @@ In Chapter 3, we will explore how these regulated systems are deployed into spec
 
 ---
 
-## 📚 References
-
-Selbst, A. D., & Barocas, S. (2018). The Intuitive Appeal of Explainable Machines. *Fordham Law Review*, 87(3), 1085.
-
-Goodman, B., & Flaxman, S. (2017). European Union Regulations on Algorithmic Decision-Making and a "Right to Explanation". *AI Magazine*, 38(3), 50-57.
-
-Nicolis, A., & Kingsman, N. (2024). AI Explainability in the EU AI Act: A Case for an NLE Approach Towards Pragmatic Explanations. *Cambridge Journal of Artificial Intelligence*, 1(1).
-
-Torkestani, M. S., & Mansouri, T. (2025). SCOR: A Framework for Responsible AI Innovation in Digital Ecosystems. *The British Academy of Management Conference 2025*, University of Kent, UK.
-
-European Parliament and Council. (2024). Regulation (EU) 2024/1689 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act). *Official Journal of the European Union*.
-
-Stanford University. (2025). *Artificial Intelligence Index Report 2025*.
-
-Winfield, A. F. T., et al. (2021). IEEE P7001: A Proposed Standard on Transparency. *Frontiers in Robotics and AI*.
-
----
-
 ## 10. AI Transparency Statement
 
 In accordance with the CSEN 1153 syllabus guidelines, I acknowledge that an AI language model was used during the preparation of this chapter. Specifically, the LLM was utilized for draft refinement, structural organization, and pedagogical scaffolding (generating the Python code snippet and discussion prompts). All AI-generated outputs were critically evaluated, independently verified against the cited academic and legal sources, and synthesized to reflect my own original analysis of the topic.
+
+---
+
+## 📚 References
+
+Selbst, A. D., & Barocas, S. (2018). The Intuitive Appeal of Explainable Machines. _Fordham Law Review_, 87(3), 1085.
+
+Goodman, B., & Flaxman, S. (2017). European Union Regulations on Algorithmic Decision-Making and a "Right to Explanation". _AI Magazine_, 38(3), 50-57.
+
+Nicolis, A., & Kingsman, N. (2024). AI Explainability in the EU AI Act: A Case for an NLE Approach Towards Pragmatic Explanations. _Cambridge Journal of Artificial Intelligence_, 1(1).
+
+Torkestani, M. S., & Mansouri, T. (2025). SCOR: A Framework for Responsible AI Innovation in Digital Ecosystems. _The British Academy of Management Conference 2025_, University of Kent, UK.
+
+European Parliament and Council. (2024). Regulation (EU) 2024/1689 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act). _Official Journal of the European Union_.
+
+Stanford University. (2025). _Artificial Intelligence Index Report 2025_.
+
+Winfield, A. F. T., et al. (2021). IEEE P7001: A Proposed Standard on Transparency. _Frontiers in Robotics and AI_.
+
+---
