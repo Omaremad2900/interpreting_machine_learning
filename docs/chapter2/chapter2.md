@@ -2,26 +2,38 @@
 
 ## 1. Introduction: Is the Algorithm's Word Enough?
 
-Imagine this scenario: You apply for a vital bank loan to buy a house, but your application is rejected. When you ask the bank why, the representative simply says: "The algorithm categorized you as high risk. The machine decided."
+Building on the technical foundations of machine learning discussed in Chapter 1, we must now confront the socio-technical reality of deploying these models in the real world.
+
+Imagine this scenario: You apply for a vital bank loan to buy a house, but your application is rejected. When you ask the bank why, the representative simply says: *"The algorithm categorized you as high risk. The machine decided."*
 
 Is that acceptable? Who deserves an explanation in that room, and what kind of explanation do they deserve? More importantly, is the bank legally required to provide one?
 
-Artificial Intelligence (AI) has moved far beyond simple recommendation systems; it is now the core infrastructure for high-stakes decision-making affecting employment, criminal justice, and healthcare. As algorithms increasingly govern human lives, opening the "black box" of AI ceases to be a mere debugging exercise for software engineers. It becomes a fundamental political, ethical, and legal challenge.
+Artificial Intelligence (AI) is now the core infrastructure for high-stakes decision-making affecting employment, criminal justice, and healthcare. As algorithms increasingly govern human lives, opening the "black box" of AI ceases to be a mere debugging exercise for software engineers. It becomes a fundamental political, ethical, and legal challenge.
 
-This chapter explores why Explainable AI (XAI) is not just a technical feature, but an essential governance tool used to distribute accountability. We will navigate the conflicting needs of different AI stakeholders, critically examine global regulatory frameworks like the EU AI Act, dive deep into the theoretical limits of transparency, and introduce actionable frameworks and code solutions to build normatively defensible AI ecosystems.
+This chapter explores why Explainable AI (XAI) is an essential governance tool used to distribute accountability. We will navigate the conflicting needs of different AI stakeholders, critically examine global regulatory frameworks like the EU AI Act, dive deep into the theoretical limits of transparency, and introduce actionable engineering frameworks (like IEEE P7001) and code solutions to build normatively defensible AI ecosystems.
 
 ---
 
-## 2. What Is an Explanation? (Explanatory Pragmatism)
+## 2. What Is an Explanation? (Explanatory Pragmatism & Measurement)
 
-Before regulating explanations, we must define what makes an explanation *good*. In XAI, we rely on the philosophical framework of **Explanatory Pragmatism**.
+Before regulating explanations, we must define what makes an explanation *good* and how to measure it.
 
-Under this framework, an explanation is not just a mathematical readout of weights and biases; it is a *communicative act* where an explainer shares information to help a specific audience achieve comprehension. A pragmatic explanation must be:
+### 2.1 Explanatory Pragmatism
+In XAI, we rely on the philosophical framework of **Explanatory Pragmatism**. Under this framework, an explanation is not just a mathematical readout of weights and biases; it is a *communicative act* where an explainer shares information to help a specific audience achieve comprehension. A pragmatic explanation must be:
 
 *   **Factually correct:** Accurately reflecting the model's operations.
 *   **Useful & Context-specific:** Providing actionable insights within the user's specific operational constraints.
-*   **User-specific:** Tailored to the recipient's technical knowledge (e.g., an ML engineer vs. a loan applicant).
+*   **User-specific:** Tailored to the recipient's technical knowledge.
 *   **Pluralistic:** Allowing for different normative perspectives rather than forcing a single viewpoint.
+
+### 2.2 Measuring Transparency: The IEEE P7001 Standard
+For software engineers, abstract philosophy must be translated into testable requirements. The **IEEE P7001 Standard on Transparency** provides a measurable framework to assess autonomous systems. For end-users, it defines testable levels of transparency:
+
+*   **Level 1:** A comprehensive user manual is provided.
+*   **Level 2:** The manual is presented as an interactive visualization or simulation.
+*   **Level 3:** The system features a *"why did you just do that?"* function, providing explanations for previous actions.
+*   **Level 4:** The system features a *"what would you do if...?"* function, allowing users to test hypothetical scenarios.
+*   **Level 5:** (Currently not defined, reserved for future advancements).
 
 ---
 
@@ -59,9 +71,11 @@ To address these loopholes, the EU enacted the Artificial Intelligence Act, a co
 *   **Human Oversight (Article 14):** Systems must allow for human intervention to prevent automation bias.
 *   **Right to Explanation (Article 86):** Grants affected persons the right to obtain clear and meaningful explanations of the AI system's role in decisions that adversely impact their fundamental rights.
 
-### 4.3 Global Norms: The OECD AI Principles
+**Systemic Risk Thresholds:** The AI Act also introduces strict governance for General-Purpose AI (GPAI). Models trained with a cumulative compute greater than **10²⁵ floating-point operations (FLOPs)** are presumed to have high-impact capabilities and face rigorous systemic risk evaluations.
 
-On a global scale, the OECD AI Principles serve as an international blueprint. Updated in 2024, these principles emphasize not just transparency, but also accountability, safety, and novel provisions to address AI-amplified misinformation and environmental sustainability.
+### 4.3 Global Trends: Is Governance Working?
+
+According to the **Artificial Intelligence Index Report 2025**, transparency and governance are actively improving across the industry. The Foundation Model Transparency Index showed that developer transparency improved significantly; average scores rose from 37 out of 100 in 2023 to **58 out of 100 in 2024**, largely driven by developers disclosing previously nonpublic data regarding labor and data usage.
 
 ---
 
@@ -73,8 +87,6 @@ Will technical transparency actually make AI fair? To answer this, we must look 
 2.  **Nonintuitiveness:** Machine learning is valuable precisely because it uncovers statistical relationships that defy human logic. Even if we perfectly reveal the math (fixing inscrutability), the rule itself might not make logical sense to a human.
 
 **The Ethical Dilemma:** Historically, humans use *intuition* as the bridge to evaluate if a decision is fair. Because AI is inherently nonintuitive, our intuition breaks down. Therefore, to prove that an AI's decision is **normatively defensible** (i.e., ethical and justified), simply explaining the final model is not enough. We must demand explanations of the *entire process* behind the model's development, including the training data and design choices.
-
-This leads to the **Transparency Illusion**: Simply showing a user the code does not automatically make the system accountable or safe. We need active governance.
 
 ---
 
@@ -91,9 +103,11 @@ Because single-organization compliance is insufficient, researchers propose the 
 
 ## 7. Practical Implementation: Bridging the "Last Mile"
 
-How do we actually deliver these explanations to non-technical users to satisfy Explanatory Pragmatism? The current leading approach is using **Natural Language Explanations (NLE)**.
+How do we actually deliver these explanations to non-technical users to satisfy Explanatory Pragmatism and the EU AI Act?
 
-Instead of showing a loan applicant a raw SHAP (SHapley Additive exPlanations) dependency plot, developers can pass feature attributions through a generative dialogue system to output a human-comprehensible explanation.
+Recent academic research in the *Cambridge Journal of Artificial Intelligence* recommends **Natural Language Explanations (NLE)** delivered via dialogue systems. Rather than showing a loan applicant a raw SHAP (SHapley Additive exPlanations) dependency plot, developers can pass feature attributions through a generative dialogue system to output a human-comprehensible explanation.
+
+Effective dialogue systems should follow key design principles: they must allow natural language prompting, understand context, clarify previous inputs, and explicitly state confidence levels or admit when they lack an answer.
 
 ### 💻 Code Snippet: Generating NLEs using Python
 
@@ -140,19 +154,19 @@ response = openai.ChatCompletion.create(
 print("NLE Output for Applicant:\n", response.choices[0].message.content)
 ```
 
-*Note for students: Recommended Python/R libraries for XAI implementation include `shap`, `lime`, `interpret-community` (Microsoft), and `Dalex` (R/Python).*
+*Note for developers: Recommended Python libraries for XAI implementation include `shap`, `lime`, `interpret-community` (Microsoft), and `Dalex`.*
 
 ---
 
 ## 8. Reflective Exercises & Discussion
 
-To solidify your understanding of these governance mechanisms, consider the following prompts:
+To solidify your understanding of these governance mechanisms, consider the following prompts before moving on to Chapter 3:
 
 > 🧠 **Discussion Prompt 1: The Trade Secrets Tension**
 > The EU AI Act demands that AI providers share technical documentation with downstream deployers. How should companies balance this legal requirement for transparency with their right to protect proprietary intellectual property and trade secrets?
 
-> 🔍 **Critical Thinking Exercise 2: Human-in-the-Loop**
-> Review the "solely automated" loophole in the GDPR (Section 4.1). If you were appointed as an auditor for a hospital using a Clinical Decision Support System (CDSS), how would you use the SCOR framework to ensure doctors aren't just blindly "rubber-stamping" the AI's diagnosis?
+> 🔍 **Critical Thinking Exercise 2: Measuring Transparency**
+> Choose a popular AI tool you use daily (e.g., ChatGPT, a recommendation algorithm). Evaluate it using the **IEEE P7001** transparency scale (Levels 1-4) described in Section 2.2. Which level does it currently achieve, and what engineering steps would be required to reach Level 4?
 
 ---
 
@@ -160,7 +174,9 @@ To solidify your understanding of these governance mechanisms, consider the foll
 
 The laws we have reviewed, from the GDPR to the EU AI Act, attempt to build necessary legal guardrails around algorithmic decision-making. However, compliance is just the beginning.
 
-As demonstrated by Explanatory Pragmatism and the SCOR framework, Explainable AI is not merely a technical feature designed to open black boxes for engineers. It is a profound political and institutional tool. When implemented responsibly, XAI has the power to bridge the gap between complex mathematics and human intuition, ensuring that automated systems remain normatively defensible and that power is redistributed equitably to the communities who must live with the results.
+As demonstrated by Explanatory Pragmatism, the SCOR framework, and the IEEE P7001 standard, Explainable AI is not merely a technical feature designed to open black boxes for engineers. It is a profound political and institutional tool. When implemented responsibly, XAI has the power to bridge the gap between complex mathematics and human intuition, ensuring that automated systems remain normatively defensible and that power is redistributed equitably to the communities who must live with the results.
+
+In Chapter 3, we will explore how these regulated systems are deployed into specific industry verticals, examining the operational realities of maintaining continuous compliance in production.
 
 ---
 
@@ -176,4 +192,6 @@ Torkestani, M. S., & Mansouri, T. (2025). SCOR: A Framework for Responsible AI I
 
 European Parliament and Council. (2024). Regulation (EU) 2024/1689 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act). *Official Journal of the European Union*.
 
-OECD. (2024). *The 2024 update to the OECD AI Principles*. Organisation for Economic Co-operation and Development.
+Stanford University. (2025). *Artificial Intelligence Index Report 2025*.
+
+Winfield, A. F. T., et al. (2021). IEEE P7001: A Proposed Standard on Transparency. *Frontiers in Robotics and AI*.
